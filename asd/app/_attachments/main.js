@@ -1,89 +1,94 @@
-$('#home').on('pageinit', function() {
-	$.couch.db("asdprojectcouch").view("asdprojectcouch/maps", {
-		success:function(data) {
-			console.log(data);
-			console.log("now");
-			$('#schedulesServerList').empty();
-			$.each(data.rows, function(index, schedules) {
-				console.log(schedules);
-				var major = schedules.doc.major;
-				var cName = schedules.doc.cName;
-				var cSection = schedules.doc.cSection;
-				var topicAndSec = schedules.doc.topicAndSec;
-				var todaysDate = schedules.doc.todaysDate;
-				var dueDate = schedules.doc.dueDate;
-				var numOfWeeks = schedules.doc.numOfWeeks;
-				var classOptView = schedules.doc.classOptView;
-				var numOfCredits = schedules.doc.numOfCredits;
-				var teachName = schedules.doc.teachName;
-				var teachEmail = schedules.doc.teachEmail;
-				var teachPhone = schedules.doc.teachPhone;
-				var bestMthCont = schedules.doc.bestMthCont;
-				var note = schedule.doc.note;
-				$('#schedulesServerList').append(
-					$('<li>').text(major);
-					$('<li>').text(cName);
-					$('<li>').text(cSection);
-					$('<li>').text(topicAndSec);
-					$('<li>').text(todaysDate);
-					$('<li>').text(dueDate);
-					$('<li>').text(numOfWeeks);
-					$('<li>').text(classOptView);
-					$('<li>').text(numOfCredits);
-					$('<li>').text(teachName);
-					$('<li>').text(teachEmail);
-					$('<li>').text(teachPhone);
-					$('<li>').text(bestMthCont);
-					$('<li>').text(note);
-				);
-			//Once added all items, need to have JQM to refresh the page to update any new styles/changes.
-			$('#schedulesServerList').listview('refresh');
-			});
-		}
-	});
-});
-
 $('#quickSchedule').on('pageinit', function(){
-    //Save the data that is being passed by the submitHandler:
-    var collForm = $('#collForm');
-    var schedErrorsLink = $('#scheduleErrors');
-    
-    collForm.validate({
-            invalidHandler: function(form, validator){},
-            submitHandler: function () {
-                    var data = collForm.serializeArray();
-                    saveInformation();
-            }
-    })
-//Variables:
-var departmentMajors = ["--Choose Major--", 
-                    "Architecture", 
-                    "Biology", 
-                    "Mathematics", 
-                    "Accounting",
-                    "Economics", 
-                    "Computer Engineering", 
-                    "Electrical Engineering"];
 var optionValue = "";
-var getErrorMessId = $('#errorMessages');
-var linkOfClear = $('#clear');
-var linkOfDisplay = $('#display');
-var save = $('#submit');
-//Radio Selection function. 
-function numOfCreditFun () {
-    var buttonRadio = $('#collegeForm').courseNumCredits;
-    for (var i = 0; i < buttonRadio.length; i++){
-        if (buttonRadio[i].checked){
-           optionValue = buttonRadio[i].value;         
-       }
-    }
+var checkBox = "";
+//Read Documents Portion of CouchDB
+function displayData() {    
+    $.couch.db("asdprojectcouch").view("asdprojectcouch/maps", {
+        success:function(data) {
+            console.log(data);
+            console.log("now");
+            $('#schedulesServerList').empty();
+            $.each(data.rows, function(index, schedules) {
+                console.log(schedules);
+                //var idShow = schedules.value._id;
+                var major = schedules.value.major;
+                var cName = schedules.value.cName;
+                var cSection = schedules.value.cSection;
+                var topicAndSec = schedules.value.topicAndSec;
+                var todaysDate = schedules.value.todaysDate;
+                var dueDate = schedules.value.dueDate;
+                var numOfWeeks = schedules.value.numOfWeeks;
+                var classOptView = schedules.value.classOptView;
+                var numOfCredits = schedules.value.numOfCredits;
+                var teachName = schedules.value.teachName;
+                var teachEmail = schedules.value.teachEmail;
+                var teachPhone = schedules.value.teachPhone;
+                var bestMthCont = schedules.value.bestMthCont;
+                var note = schedules.value.note;
+                
+                var dataLi = $('<li>');
+                dataLi.attr("id", "liData");
+                var dataText = $(
+                    '<h4>' + major[0] + " " + major[1] + '</h4>' +
+                    '<p>' + cName[0] + " " + cName[1] + '</p>' +
+                    '<p>' + cSection[0] + cSection[1] + '</p>' + 
+                    '<p>' + topicAndSec[0] + " " + topicAndSec[1] + '</p>' +
+                    '<p>' + todaysDate[0] + " " + todaysDate[1] + '</p>' +
+                    '<p>' + dueDate[0] + " " + dueDate[1] + '</p>' +
+                    '<p>' + numOfWeeks[0] + " " + numOfWeeks[1] + '</p>' + 
+                    '<p>' + classOptView[0] + " " + classOptView[1] + '</p>' + 
+                    '<p>' + numOfCredits[0] + " " + numOfCredits[1] + '</p>' + 
+                    '<p>' + teachName[0] + " " + teachName[1] + '</p>' + 
+                    '<p>' + teachEmail[0] + " " + teachEmail[1] + '</p>' + 
+                    '<p>' + teachPhone[0] + " " + teachPhone[1] + '</p>' +
+                    '<p>' + bestMthCont[0] + " " + bestMthCont[1] + '</p>' +
+                    '<p>' + note[0] + " " + note[1] + '</p>'
+                );
+                var dataTotal = dataLi.append(dataText);
+                $('#schedulesServerList').append(dataTotal);
+                console.log(dataLi);
+            });
+            //Once added all items, need to have JQM to refresh the page to update any new styles/changes.
+            //$('#schedulesServerList').listview('refresh');
+            
+        },
+        error: function () {
+            alert("Error");
+        }
+    });
 }
-//To save all of the information in local storage.
+//CouchDB Save Function to store the data that is being passed by info object. 
+//Create Document Portion CouchDB Part1.
+function couchDBSave (info) {
+    $.couch.db("asdprojectcouch").saveDoc(info, {
+        success: function (data){
+            console.log(data);
+            alert("Data Has Been Saved!!");
+        },
+        error: function (status) {
+            console.log(status);
+        }
+    });
+}
+
+//Radio Selection function:
+    function numOfCreditFun() {
+        var buttonRadio = $("#collegeForm input[type='radio']:checked").val();
+        return buttonRadio;
+    }
+//Checkbox function:
+    function bestMthContFun() {
+        checkBox = $("input[name=bestMethodContact]:checked").val(); 
+        return checkBox;     
+    }
+//To save all of the information in the CouchDB.
+//Create Document Portion CouchDB Part1.
 function saveInformation (key) {
    //This function is in the case if theirs no key present.
    //Meaning this will generate a new key. 
+    var id = 0;
     if (!key) {
-        var id                = Math.floor(Math.random()*1000292002);
+        id                = Math.floor(Math.random()*1000292002);
     } else { 
         //If theirs a key this conditional takes place.
         //By setting the key to the id it replaces the information.
@@ -107,9 +112,51 @@ function saveInformation (key) {
         info.teacherPhone     = ["Teacher Phone:", $('#teacherPhone').val()];
         info.bestMthCont      = ["Best Method To Get In Contact:", bestMthContFun];
         info.note             = ["Note Section:", $('#noteSection').val()];
-    localStorage.setItem(id, JSON.stringify(info));
-    alert("Assignment Saved!!");
+    //localStorage.setItem(id, JSON.stringify(info));
+    couchDBSave(info);
 }
+   //Save the data that is being passed by the submitHandler:
+    function collValidate(){
+        var collForm = $('#collForm');
+        var schedErrorsLink = $('#scheduleErrors');
+    
+        collForm.validate({
+            invalidHandler: function(form, validator){},
+            submitHandler: function () {
+                saveInformation(this.id);
+            }
+        });
+    }
+
+
+        $('#submit').on('click', saveInformation);
+        $('#displayLinkpg').on('click', displayData);
+
+$('#displayLinkpg').on('pageinit', function(){
+    var dataOfURL = $(this).data("url");
+    console.log(dataOfURL);
+});
+$('.navhome').on("click", refresh);
+    function refresh(){
+        window.location.reload();
+    }
+
+$('#home').on('pageinit', function(){
+    console.log("Starting");
+    $('#addQuickSchedule').on("click", displayData);
+    
+});
+
+
+//Variables:
+
+
+var getErrorMessId = $('#errorMessages');
+var linkOfClear = $('#clear');
+var linkOfDisplay = $('#display');
+//$('#submit').on('click', saveInformation);
+
+
 //In what way to display the local storage.    
 function visibilityOfElement (v) {
     switch (v) {
@@ -159,7 +206,7 @@ function displayCheck () {
 }
 //The event listener function to allow the user edit the form.
 function editSchedule (s) {
-	var thisValKey = $(this).attr("key");
+    var thisValKey = $(this).attr("key");
     var valueToEdit = localStorage.getItem(thisValKey);
     var info = JSON.parse(valueToEdit);
     visibilityOfElement("off");//Display the form.
@@ -294,19 +341,8 @@ function getInfoToDisplay () {
      var breakTag = $('</br>');
     breakTag.html('createDiv');
 }
-//This function is being called within the getInfoToDisplay function to get the correct icon of the major that was chosen.
-function getMajorIcons (major, list) {
-    var iconList = $('<li>');
-    iconList.appendTo(list);
-    var newIcon = $('<img/>');
-    newIcon.attr("id", "icon");
-    var iconAttribute = newIcon.attr("src", "images/" + major + ".png");
-    newIcon.appendTo(iconList);
 
-}
-//Main Event Listeners
 $(linkOfClear).on("click", eraseInformation);
-$(linkOfDisplay).on("click", getInfoToDisplay);
-$(save).bind("click", validateField);//Change to validate to check the user input correctly before saving to local storage.
-});
+
+
 

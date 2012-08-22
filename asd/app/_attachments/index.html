@@ -33,49 +33,21 @@
 				<!--Description-->
 				<p id="descriptEntry">Balance School, Work, and Personal Activities all in one Application.<p>
 				<!--Call To Action Button-->
-				<!--Add Quick Schedule--> 
-				<nav> 
-					<a href="#quickSchedule" data-role="button" id="addQuickSchedule" data-ajax="false">Add Quick Schedule
-					</a>
-				</nav>
-				<!--Option Section--> 
-				<h3>Pick An Option:</h3>
-				<div data-role="listview" data-inset="true" data-filter="true" data-content-theme="a">
-					<!--Browse About--> 
-					<li data-filtertext="About, Different organizers, Information"><a href="#about" data-rel="dialog" data-theme="c"><img src="images/QuestionMark.png" id="aboutPic"/><h3>About</h3>
-						<p id="about1">Full description about the</p><p id="about2">application and</p><p id="about3">it's features.</p></a>
-					</li>
-					<!--JSON Server Button-->
-					<li data-filtertext="JSON Server Couch Cloud"><a href="#jsonServerInfo" id="#jsonServerInfo" data-rel="dialog"><h3>JSON Server Data</h3></a>
-					</li>
+				<div data-role="controlgroup" data-content-theme="a">
+					<!--Add Quick Schedule-->
+						<a href="#quickSchedule" id="addQuickSchedule" data-role="button" data-ajax="false">Add Quick Schedule</a>
+				 	<!--View Saved Data--> 
+						<a href="#" id="#" data-role="button">View Stored Data</a>
 				</div>
 			</div>
 			<footer data-role="footer">
 				<!--Navigation Bar--> 
 				<div data-role="navbar">
 					<ul>
-						<li><a href="#home" id="navhome">Home</a></li>
-						<li><a href="https://github.com/alexcherrera/ASD/tree/gh-pages/Week1/" id="linkgh-pages">GitHub Page</a></li>
-						<li><a href="http://alexcherrera.github.com/ASD/Week1/">Live Page</a></li>
-					</ul>
-				</div>
-			</footer>
-		</section>
-		<!--About Page--> 
-		<section data-role="page" id="about" data-add-back-btn="true">
-			<header data-role="header">
-				<h1>About</h>
-			</header>
-			<div data-role="content"class="content">
-				<p id="aboutPage">The purpose of this application is to have a sense of balance for the typical college student between school, work, and personal activities. By using different types of methods such as calendar's, todo list, reminder, and more the student will be able to organize all activities on just one device.</p>
-			</div>
-			<footer data-role="footer">
-				<!--Navigation Bar--> 
-				<div data-role="navbar">
-					<ul>
-						<li><a href="#home" id="navhome">Home</a></li>
-						<li><a href="https://github.com/alexcherrera/ASD/tree/gh-pages/Week1/" id="linkgh-pages">GitHub Page</a></li>
-						<li><a href="http://alexcherrera.github.com/ASD/Week1/">Live Page</a></li>
+						<li><a href="index.html" class="navhome">Home</a></li>
+						<li><a href="#addSchedule" class="add">Add New</a></li>
+						<li><a href="editSchedule" class="edit">Edit</a></li>
+						<li><a href="deleteSchedule" class="delete">Delete</a></li>
 					</ul>
 				</div>
 			</footer>
@@ -93,9 +65,10 @@
 				<!--Navigation Bar--> 
 				<div data-role="navbar">
 					<ul>
-						<li><a href="#home" id="navhome">Home</a></li>
-						<li><a href="https://github.com/alexcherrera/ASD/tree/gh-pages/Week1/" id="linkgh-pages">GitHub Page</a></li>
-						<li><a href="http://alexcherrera.github.com/ASD/Week1/">Live Page</a></li>
+						<li><a href="index.html" class="navhome">Home</a></li>
+						<li><a href="#addSchedule" class="add">Add New</a></li>
+						<li><a href="editSchedule" class="edit">Edit</a></li>
+						<li><a href="deleteSchedule" class="delete">Delete</a></li>
 					</ul>
 				</div>
 			</footer>
@@ -114,9 +87,10 @@
 				<!--Navigation Bar--> 
 				<div data-role="navbar">
 					<ul>
-						<li><a href="#home" id="navhome">Home</a></li>
-						<li><a href="https://github.com/alexcherrera/ASD/tree/gh-pages/Week1/" id="linkgh-pages">GitHub Page</a></li>
-						<li><a href="http://alexcherrera.github.com/ASD/Week1/">Live Page</a></li>
+						<li><a href="index.html" class="navhome">Home</a></li>
+						<li><a href="#addSchedule" class="add">Add New</a></li>
+						<li><a href="editSchedule" class="edit">Edit</a></li>
+						<li><a href="deleteSchedule" class="delete">Delete</a></li>
 					</ul>
 				</div>
 			</footer>
@@ -133,9 +107,10 @@
 				<!--Navigation Bar--> 
 				<div data-role="navbar">
 					<ul>
-						<li><a href="#home" id="navhome">Home</a></li>
-						<li><a href="https://github.com/alexcherrera/ASD/tree/gh-pages/Week1/" id="linkgh-pages">GitHub Page</a></li>
-						<li><a href="http://alexcherrera.github.com/ASD/Week1/">Live Page</a></li>
+						<li><a href="index.html" class="navhome">Home</a></li>
+						<li><a href="#addSchedule" class="add">Add New</a></li>
+						<li><a href="editSchedule" class="edit">Edit</a></li>
+						<li><a href="deleteSchedule" class="delete">Delete</a></li>
 					</ul>
 				</div>
 			</footer>
@@ -261,38 +236,38 @@
 					<a href="#scheduleErrors" id="schedErrorsLink" data-rel="dialog" data-transition="pop">Open Errors</a>
 				</form>	
 			</div>
-			<nav>
-				<br/>
-				<a href="#" id="clear" data-inline="true" data-role="button" data-add-back-btn="true">Erase Information</a>
-				<a href="#displayLinkpg" id="display" data-inline="true" data-role="button" data-add-back-btn="true">Display Information</a>
-				<a href="#quickSchedule" id="addAssign" data-inline="true" data-role="button" data-add-back-btn="true">Add New Assignment</a>
-			</nav>
 			<footer data-role="footer">
 				<!--Navigation Bar--> 
 				<div data-role="navbar">
 					<ul>
-						<li><a href="#home" data-ajax="false" id="navhome">Home</a></li>
-						<li><a href="https://github.com/alexcherrera/ASD/tree/gh-pages/Week1/" id="linkgh-pages">GitHub Page</a></li>
-						<li><a href="http://alexcherrera.github.com/ASD/Week1/">Live Page</a></li>
+						<li><a href="index.html" class="navhome">Home</a></li>
+						<li><a href="#addSchedule" class="add">Add New</a></li>
+						<li><a href="editSchedule" class="edit">Edit</a></li>
+						<li><a href="deleteSchedule" class="delete">Delete</a></li>
 					</ul>
 				</div>
 			</footer>
 		</section>
+		<!--Display CouchDB -->
 		<section data-role="page" id="displayLinkpg" data-add-back-btn="true">
-			<header data-role="header" id="qSHeader" data-position="fixed">
+			<header data-role="header" id="displHeader" data-position="fixed">
 				<!--Main header--> 
 				<h1>Display Information</h1>
 			</header>
 			<div data-role="content" class="content" id="displayLink">
-			
+				<p>Hello</p>
+				<ul id="schedulesServerList" data-role="listview">
+
+				</ul>
 			</div>	
 			<footer data-role="footer">
 				<!--Navigation Bar--> 
 				<div data-role="navbar">
 					<ul>
-						<li><a href="#home" data-ajax="false" id="navhome">Home</a></li>
-						<li><a href="https://github.com/alexcherrera/ASD/tree/gh-pages/Week1/" id="linkgh-pages">GitHub Page</a></li>
-						<li><a href="http://alexcherrera.github.com/ASD/Week1/">Live Page</a></li>
+						<li><a href="index.html" class="navhome">Home</a></li>
+						<li><a href="#addSchedule" class="add">Add New</a></li>
+						<li><a href="editSchedule" class="edit">Edit</a></li>
+						<li><a href="deleteSchedule" class="delete">Delete</a></li>
 					</ul>
 				</div>
 			</footer>
@@ -304,7 +279,7 @@
 				<h1>JSON Data</h1>
 			</header>
 			<div data-role="content" class="ui-body-a">
-				<ul id="schedulesServerList" data-role="listview">
+				<ul id="schedulesServerListNone" data-role="listview">
 
 				</ul>
 					
@@ -313,9 +288,10 @@
 				<!--Navigation Bar--> 
 				<div data-role="navbar">
 					<ul>
-						<li><a href="#home" data-ajax="false" id="navhome">Home</a></li>
-						<li><a href="https://github.com/alexcherrera/ASD/tree/gh-pages/Week1/" id="linkgh-pages">GitHub Page</a></li>
-						<li><a href="http://alexcherrera.github.com/ASD/Week1/">Live Page</a></li>
+						<li><a href="index.html" class="navhome">Home</a></li>
+						<li><a href="#addSchedule" class="add">Add New</a></li>
+						<li><a href="editSchedule" class="edit">Edit</a></li>
+						<li><a href="deleteSchedule" class="delete">Delete</a></li>
 					</ul>
 				</div>
 			</footer>
