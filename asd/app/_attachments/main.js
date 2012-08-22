@@ -1,117 +1,45 @@
-$('#home').on('pageinit', function(){
-    
-	$('#loadServer').on('click', function(){
-		console.log("Now");
-		$.ajax({
-			"url": "_view/maps",
-			"dataType": "json",
-			"success": function (data) {
-				console.log(data);
-				$.each(data.rows, function(index, schedules){
-					console.log(schedules);
-					var major = schedules.doc.major;
-					var cName = schedules.doc.cName;
-					var cSection = schedules.doc.cSection;
-					var topicAndSec = schedules.doc.topicAndSec;
-					var todaysDate = schedules.doc.todaysDate;
-					var dueDate = schedules.doc.dueDate;
-					var numOfWeeks = schedules.doc.numOfWeeks;
-					var classOptView = schedules.doc.classOptView;
-					var numOfCredits = schedules.doc.numOfCredits;
-					var teachName = schedules.doc.teachName;
-					var teachEmail = schedules.doc.teachEmail;
-					var teachPhone = schedules.doc.teachPhone;
-					var option = schedules.doc.option;
-					var note = schedule.doc.note;
-					$('#schedulesServerList').append(
-						$('<li>').append(
-							$('<a>').append("href", "#")
-								.text(major)
-						)
-					);
-					$('#schedulesServerList').append(
-						$('<li>').append(
-							$('<a>').append("href", "#")
-								.text(cName)
-						)
-					);
-					$('#schedulesServerList').append(
-						$('<li>').append(
-							$('<a>').append("href", "#")
-								.text(cSection)
-						)
-					);
-					$('#schedulesServerList').append(
-						$('<li>').append(
-							$('<a>').append("href", "#")
-								.text(topicAndSec)
-						)
-					);
-					$('#schedulesServerList').append(
-						$('<li>').append(
-							$('<a>').append("href", "#")
-								.text(todaysDate)
-						)
-					);
-					$('#schedulesServerList').append(
-						$('<li>').append(
-							$('<a>').append("href", "#")
-								.text(dueDate)
-						)
-					);
-					$('#schedulesServerList').append(
-						$('<li>').append(
-							$('<a>').append("href", "#")
-								.text(numOfWeeks)
-						)
-					);
-					$('#schedulesServerList').append(
-						$('<li>').append(
-							$('<a>').append("href", "#")
-								.text(classOptView)
-						)
-					);
-					$('#schedulesServerList').append(
-						$('<li>').append(
-							$('<a>').append("href", "#")
-								.text(numOfCredits)
-						)
-					);
-					$('#schedulesServerList').append(
-						$('<li>').append(
-							$('<a>').append("href", "#")
-								.text(teachName)
-						)
-					);
-					$('#schedulesServerList').append(
-						$('<li>').append(
-							$('<a>').append("href", "#")
-								.text(teachEmail)
-						)
-					);
-					$('#schedulesServerList').append(
-						$('<li>').append(
-							$('<a>').append("href", "#")
-								.text(teachPhone)
-						)
-					);
-					$('#schedulesServerList').append(
-						$('<li>').append(
-							$('<a>').append("href", "#")
-								.text(option)
-						)
-					);
-					$('#schedulesServerList').append(
-						$('<li>').append(
-							$('<a>').append("href", "#")
-								.text(note)
-						)
-					);
-				});
-				//Once added all items, need to have JQM to refresh the page to update any new styles/changes.
-				$('#schedulesServerList').listview('refresh');
-			}
-		});
+$('#home').on('pageinit', function() {
+	$.couch.db("asdprojectcouch").view("asdprojectcouch/maps", {
+		success:function(data) {
+			console.log(data);
+			console.log("now");
+			$('#schedulesServerList').empty();
+			$.each(data.rows, function(index, schedules) {
+				console.log(schedules);
+				var major = schedules.doc.major;
+				var cName = schedules.doc.cName;
+				var cSection = schedules.doc.cSection;
+				var topicAndSec = schedules.doc.topicAndSec;
+				var todaysDate = schedules.doc.todaysDate;
+				var dueDate = schedules.doc.dueDate;
+				var numOfWeeks = schedules.doc.numOfWeeks;
+				var classOptView = schedules.doc.classOptView;
+				var numOfCredits = schedules.doc.numOfCredits;
+				var teachName = schedules.doc.teachName;
+				var teachEmail = schedules.doc.teachEmail;
+				var teachPhone = schedules.doc.teachPhone;
+				var bestMthCont = schedules.doc.bestMthCont;
+				var note = schedule.doc.note;
+				$('#schedulesServerList').append(
+					$('<li>').text(major);
+					$('<li>').text(cName);
+					$('<li>').text(cSection);
+					$('<li>').text(topicAndSec);
+					$('<li>').text(todaysDate);
+					$('<li>').text(dueDate);
+					$('<li>').text(numOfWeeks);
+					$('<li>').text(classOptView);
+					$('<li>').text(numOfCredits);
+					$('<li>').text(teachName);
+					$('<li>').text(teachEmail);
+					$('<li>').text(teachPhone);
+					$('<li>').text(bestMthCont);
+					$('<li>').text(note);
+				);
+			//Once added all items, need to have JQM to refresh the page to update any new styles/changes.
+			$('#schedulesServerList').listview('refresh');
+			});
+		}
 	});
 });
 
@@ -377,8 +305,8 @@ function getMajorIcons (major, list) {
 
 }
 //Main Event Listeners
-linkOfClear.on("click", eraseInformation);
-linkOfDisplay.on("click", getInfoToDisplay);
-save.on("click", validateField);//Change to validate to check the user input correctly before saving to local storage.
+$(linkOfClear).on("click", eraseInformation);
+$(linkOfDisplay).on("click", getInfoToDisplay);
+$(save).bind("click", validateField);//Change to validate to check the user input correctly before saving to local storage.
 });
 
