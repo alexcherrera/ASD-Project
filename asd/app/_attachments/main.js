@@ -30,7 +30,7 @@ $('#quickSchedule').on('pageinit', function() {
     }
     //CouchDB Save Function to store the data that is being passed by info object. 
     //Create Document Portion CouchDB Part1.
-    function couchDBSave (info) {
+    var couchDBSave = function (info) {
         $.couch.db("asdprojectcouch").saveDoc(info, {
             success: function (info){
                 console.log(info);
@@ -101,7 +101,9 @@ $('#quickSchedule').on('pageinit', function() {
     	$('#viewschdLi').empty();
     	$.couch.db("asdprojectcouch").view("asdprojectcouch/maps", {
         	success:function(data) {
-                console.log(data);
+        		createEditLink(couchDBSave.key(i), createListLinks);//Calling the function that will only have the edit link for the user to make corrections in the local storage.
+                createDeleteLink(couchDBSave.key(i), createListLinks);//Calling the function that will only have the delete link.
+        		console.log(data);
                 console.log("now");
             
                 $.each(data.rows, function(index, schedules) {
@@ -146,11 +148,11 @@ $('#quickSchedule').on('pageinit', function() {
                     //Change the button of submit to Edit Schedule.
                     $('submit').val() = "Edit Schedule";
                     var editScheduleButton = $('#submit');
-                    editScheduleButton.on("click", saveInfo);
-                    //Get the key from local storage
+                    editScheduleButton.on("click", saveInformation);
+                    //Get the key from couch storage
                     editScheduleButton.key = this.key;
                 }
-            //Create Edit Link to change information that is in the local storage.
+            //Create Edit Link to change information that is in the couch storage.
                 function createEditLink (key, eLink) {
                     var linkEdit = $('<a>');
                     linkEdit.attr("href", "#");
@@ -159,8 +161,6 @@ $('#quickSchedule').on('pageinit', function() {
                     var textEdit = "Edit Schedule";
                     linkEdit.text(textEdit);
                     linkEdit.on("click", editSchedule);
-                    //linkEdit.addEventListener("click", editSchedule);
-                    //linkEdit.innerHTML = textEdit;
                     eLink.append(linkEdit);
                 }
             //Create Delete Link to erase items in the local storage.
@@ -172,8 +172,6 @@ $('#quickSchedule').on('pageinit', function() {
                     var textDelete = "Delete Schedule";
                     linkDelete.text(textDelete);
                     linkDelete.on("click", deleteSchedule);
-                    //linkDelete.addEventListener("click", deleteSchedule);
-                    //linkDelete.innerHTML = textDelete;
                     dLink.append(linkDelete);
                 }
             //The event listener function for the user to delete.
