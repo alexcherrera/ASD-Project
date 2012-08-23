@@ -37,7 +37,7 @@
 					<!--Add Quick Schedule-->
 						<a href="#quickSchedule" id="addQuickSchedule" data-role="button" data-ajax="false">Add Quick Schedule</a>
 				 	<!--View Saved Data--> 
-						<a href="#" id="#" data-role="button">View Stored Data</a>
+						<a href="#viewSchedule" class="view" data-role="button">View Stored Data</a>
 				</div>
 			</div>
 			<footer data-role="footer">
@@ -45,9 +45,9 @@
 				<div data-role="navbar">
 					<ul>
 						<li><a href="index.html" class="navhome">Home</a></li>
+						<li><a href="#viewSchedule" class="view">View</a></li>
 						<li><a href="#addSchedule" class="add">Add New</a></li>
-						<li><a href="editSchedule" class="edit">Edit</a></li>
-						<li><a href="deleteSchedule" class="delete">Delete</a></li>
+						<li><a href="#editSchedule" class="edit">Edit</a></li>
 					</ul>
 				</div>
 			</footer>
@@ -66,9 +66,9 @@
 				<div data-role="navbar">
 					<ul>
 						<li><a href="index.html" class="navhome">Home</a></li>
+						<li><a href="#viewSchedule" class="view">View</a></li>
 						<li><a href="#addSchedule" class="add">Add New</a></li>
-						<li><a href="editSchedule" class="edit">Edit</a></li>
-						<li><a href="deleteSchedule" class="delete">Delete</a></li>
+						<li><a href="#editSchedule" class="edit">Edit</a></li>
 					</ul>
 				</div>
 			</footer>
@@ -88,9 +88,9 @@
 				<div data-role="navbar">
 					<ul>
 						<li><a href="index.html" class="navhome">Home</a></li>
+						<li><a href="#viewSchedule" class="view">View</a></li>
 						<li><a href="#addSchedule" class="add">Add New</a></li>
-						<li><a href="editSchedule" class="edit">Edit</a></li>
-						<li><a href="deleteSchedule" class="delete">Delete</a></li>
+						<li><a href="#editSchedule" class="edit">Edit</a></li>
 					</ul>
 				</div>
 			</footer>
@@ -108,9 +108,9 @@
 				<div data-role="navbar">
 					<ul>
 						<li><a href="index.html" class="navhome">Home</a></li>
+						<li><a href="#viewSchedule" class="view">View</a></li>
 						<li><a href="#addSchedule" class="add">Add New</a></li>
-						<li><a href="editSchedule" class="edit">Edit</a></li>
-						<li><a href="deleteSchedule" class="delete">Delete</a></li>
+						<li><a href="#editSchedule" class="edit">Edit</a></li>
 					</ul>
 				</div>
 			</footer>
@@ -241,9 +241,9 @@
 				<div data-role="navbar">
 					<ul>
 						<li><a href="index.html" class="navhome">Home</a></li>
+						<li><a href="#viewSchedule" class="view">View</a></li>
 						<li><a href="#addSchedule" class="add">Add New</a></li>
-						<li><a href="editSchedule" class="edit">Edit</a></li>
-						<li><a href="deleteSchedule" class="delete">Delete</a></li>
+						<li><a href="#editSchedule" class="edit">Edit</a></li>
 					</ul>
 				</div>
 			</footer>
@@ -265,9 +265,9 @@
 				<div data-role="navbar">
 					<ul>
 						<li><a href="index.html" class="navhome">Home</a></li>
+						<li><a href="#viewSchedule" class="view">View</a></li>
 						<li><a href="#addSchedule" class="add">Add New</a></li>
-						<li><a href="editSchedule" class="edit">Edit</a></li>
-						<li><a href="deleteSchedule" class="delete">Delete</a></li>
+						<li><a href="#editSchedule" class="edit">Edit</a></li>
 					</ul>
 				</div>
 			</footer>
@@ -289,9 +289,82 @@
 				<div data-role="navbar">
 					<ul>
 						<li><a href="index.html" class="navhome">Home</a></li>
+						<li><a href="#viewSchedule" class="view">View</a></li>
 						<li><a href="#addSchedule" class="add">Add New</a></li>
-						<li><a href="editSchedule" class="edit">Edit</a></li>
-						<li><a href="deleteSchedule" class="delete">Delete</a></li>
+						<li><a href="#editSchedule" class="edit">Edit</a></li>
+					</ul>
+				</div>
+			</footer>
+		</section>
+		<!--View Data-->
+		<section data-role="page" id="viewSchedule" class="view" data-add-back-btn="true">
+			<header data-role="header" id="viewHeader" data-position="fixed">
+				<!--Main header--> 
+				<h1>View Data</h1>
+			</header>
+			<div data-role="content" class="ui-body-b">
+				<p>ViewNow</p>
+				<ul id="viewschdLi" data-role="listview">
+					
+				</ul>
+					
+			</div>
+			<footer data-role="footer">
+				<!--Navigation Bar--> 
+				<div data-role="navbar">
+					<ul>
+						<li><a href="index.html" class="navhome">Home</a></li>
+						<li><a href="#viewSchedule" class="view">View</a></li>
+						<li><a href="#addSchedule" class="add">Add New</a></li>
+						<li><a href="#editSchedule" class="edit">Edit</a></li>
+					</ul>
+				</div>
+			</footer>
+		</section>
+		<!--Add Data-->
+		<section data-role="page" id="addSchedule" class="add" data-add-back-btn="true">
+			<header data-role="header" id="addHeader" data-position="fixed">
+				<!--Main header--> 
+				<h1>Add Data</h1>
+			</header>
+			<div data-role="content" class="ui-body-a">
+				<ul id="addschdLi" data-role="listview">
+
+				</ul>
+					
+			</div>
+			<footer data-role="footer">
+				<!--Navigation Bar--> 
+				<div data-role="navbar">
+					<ul>
+						<li><a href="index.html" class="navhome">Home</a></li>
+						<li><a href="#viewSchedule" class="view">View</a></li>
+						<li><a href="#addSchedule" class="add">Add New</a></li>
+						<li><a href="#editSchedule" class="edit">Edit</a></li>
+					</ul>
+				</div>
+			</footer>
+		</section>
+		<!--Edit Data-->
+		<section data-role="page" id="editSchedule" class="edit" data-add-back-btn="true">
+			<header data-role="header" editHeader" data-position="fixed">
+				<!--Main header--> 
+				<h1>Edit Data</h1>
+			</header>
+			<div data-role="content" class="ui-body-a">
+				<ul id="edtschdLi" data-role="listview">
+
+				</ul>
+					
+			</div>
+			<footer data-role="footer">
+				<!--Navigation Bar--> 
+				<div data-role="navbar">
+					<ul>
+						<li><a href="index.html" class="navhome">Home</a></li>
+						<li><a href="#viewSchedule" class="view">View</a></li>
+						<li><a href="#addSchedule" class="add">Add New</a></li>
+						<li><a href="#editSchedule" class="edit">Edit</a></li>
 					</ul>
 				</div>
 			</footer>

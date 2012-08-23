@@ -1,7 +1,7 @@
 function (doc) {
-	if(doc._id.substr(0,9) === "schedules") {
+	if(doc._id === "") {
 		//emit method works the same as a return
-		emit(doc._id.substr(9), {
+		emit(doc._id, {
 			"major"         : doc.major,
 			"cName"         : doc.cName,
 			"cSection"      : doc.cSection,
