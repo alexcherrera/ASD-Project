@@ -42,7 +42,7 @@
   /**
    * @private
    */
-  function encodeDocId(docID) {
+ function encodeDocId(docID) {
     var parts = docID.split("/");
     if (parts[0] == "_design") {
       parts.shift();

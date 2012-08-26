@@ -3,8 +3,39 @@ $('#home').on('pageinit', function() {
 	
 	
 });
+var mon1Schd = {
+	_id: "Mondays:Schedule1"
+}
+var mon2Schd = {
+	_id: "Mondays:Schedule2"
+}
+var tues1Schd = {
+	_id: "Tuesdays:Schedule1"
+}
+var tues2Schd = {
+	_id: "Tuesdays:Schedule2"
+}
+var wednes1Schd = {
+	_id: "Wednesdays:Schedule1"
+}
+var wednes2Schd = {
+	_id: "Wednesdays:Schedule2"
+}
+var thurs1Schd = {
+	_id: "Thursdays:Schedule1"
+}
+var fri1Schd = {
+	_id: "Fridays:Schedule1"
+}
+var satur1Schd = {
+	_id: "Saturdays:Schedule1"
+}
+var sun1Schd = {
+	_id: "Sundays:Schedule1"	
+}
+console.log(mon1Schd._id);
 function mon1() {
-	$.couch.db('asdfix').openDoc('Mondays:Schedule1', {
+	$.couch.db('asdfix').openDoc(mon1Schd._id, {
 		success:function(data) {
 			console.log(data);
 			//$('#viewSchd').empty();
@@ -45,8 +76,15 @@ function mon1() {
             
             for(var i=0, l= monAll.length; i<l; i++){
             	var show = monAll[i];
-            	$('#monSchd').append(
-            			$('<li>').text(show));
+            	var bothLinks = 
+            		'<div class="schdWindowEdt"> ' +
+            		'<a href="#schdedit" class="editLink">Edit</a> ' + 
+            		'<a href="#" class="deleteLink">Delete</a> ' +
+            		'</div>';
+            	
+            		$('#monSchd').append(
+            			$('<li>').text(show).append(bothLinks)
+            		);
             	console.log(show);
             }
             $('#monSchd').listview('refresh');
@@ -57,7 +95,7 @@ function mon1() {
 	});
 }
 function mon2() {
-	$.couch.db('asdfix').openDoc('Mondays:Schedule2', {
+	$.couch.db('asdfix').openDoc(mon2Schd._id, {
 		success:function(data) {
 			console.log(data);
 			//$('#viewSchd').empty();
@@ -98,8 +136,15 @@ function mon2() {
             
             for(var i=0, l= monAll.length; i<l; i++){
             	var show = monAll[i];
-            	$('#monSchd').append(
-            			$('<li>').text(show));
+            	var bothLinks = 
+            		'<div class="schdWindowEdt"> ' +
+            		'<a href="#" class="editLink">Edit</a> ' + 
+            		'<a href="#" class="deleteLink">Delete</a> ' +
+            		'</div>';
+            	
+            		$('#monSchd').append(
+            			$('<li>').text(show).append(bothLinks)
+            		);
             	console.log(show);
             }
             $('#monSchd').listview('refresh');
@@ -110,7 +155,7 @@ function mon2() {
 	});
 }
 function tues1() {
-	$.couch.db('asdfix').openDoc('Tuesdays:Schedule1', {
+	$.couch.db('asdfix').openDoc(tues1Schd._id, {
 		success:function(data) {
 			console.log(data);
 			//$('#viewSchd').empty();
@@ -151,8 +196,15 @@ function tues1() {
             
             for(var i=0, l= tuesAll.length; i<l; i++){
             	var show = tuesAll[i];
-            	$('#tuesSchd').append(
-            			$('<li>').text(show));
+            	var bothLinks = 
+            		'<div class="schdWindowEdt"> ' +
+            		'<a href="#" class="editLink">Edit</a> ' + 
+            		'<a href="#" class="deleteLink">Delete</a> ' +
+            		'</div>';
+            	
+            		$('#tuesSchd').append(
+            			$('<li>').text(show).append(bothLinks)
+            		);
             	console.log(show);
             }
             $('#tuesSchd').listview('refresh');
@@ -163,7 +215,7 @@ function tues1() {
 	});
 }
 function tues2() {
-	$.couch.db('asdfix').openDoc('Tuesdays:Schedule2', {
+	$.couch.db('asdfix').openDoc(tues2Schd._id, {
 		success:function(data) {
 			console.log(data);
 			//$('#viewSchd').empty();
@@ -204,8 +256,15 @@ function tues2() {
             
             for(var i=0, l= tuesAll.length; i<l; i++){
             	var show = tuesAll[i];
-            	$('#tuesSchd').append(
-            			$('<li>').text(show));
+            	var bothLinks = 
+            		'<div class="schdWindowEdt"> ' +
+            		'<a href="#" class="editLink">Edit</a> ' + 
+            		'<a href="#" class="deleteLink">Delete</a> ' +
+            		'</div>';
+            	
+            		$('#tuesSchd').append(
+            			$('<li>').text(show).append(bothLinks)
+            		);
             	console.log(show);
             }
             $('#tuesSchd').listview('refresh');
@@ -216,7 +275,7 @@ function tues2() {
 	});
 }
 function wednes1() {
-	$.couch.db('asdfix').openDoc('Wednesdays:Schedule1', {
+	$.couch.db('asdfix').openDoc(wednes1Schd._id, {
 		success:function(data) {
 			console.log(data);
 			//$('#viewSchd').empty();
@@ -257,8 +316,15 @@ function wednes1() {
             
             for(var i=0, l= wednesAll.length; i<l; i++){
             	var show = wednesAll[i];
-            	$('#wednesSchd').append(
-            			$('<li>').text(show));
+            	var bothLinks = 
+            		'<div class="schdWindowEdt"> ' +
+            		'<a href="#" class="editLink">Edit</a> ' + 
+            		'<a href="#" class="deleteLink">Delete</a> ' +
+            		'</div>';
+            	
+            		$('#wednesSchd').append(
+            			$('<li>').text(show).append(bothLinks)
+            		);
             	console.log(show);
             }
             $('#wednesSchd').listview('refresh');
@@ -269,7 +335,7 @@ function wednes1() {
 	});
 }
 function wednes2() {
-	$.couch.db('asdfix').openDoc('Wednesdays:Schedule2', {
+	$.couch.db('asdfix').openDoc(wednes2Schd._id, {
 		success:function(data) {
 			console.log(data);
 			//$('#viewSchd').empty();
@@ -310,8 +376,15 @@ function wednes2() {
             
             for(var i=0, l= wednesAll.length; i<l; i++){
             	var show = wednesAll[i];
-            	$('#wednesSchd').append(
-            			$('<li>').text(show));
+            	var bothLinks = 
+            		'<div class="schdWindowEdt"> ' +
+            		'<a href="#" class="editLink">Edit</a> ' + 
+            		'<a href="#" class="deleteLink">Delete</a> ' +
+            		'</div>';
+            	
+            		$('#wednesSchd').append(
+            			$('<li>').text(show).append(bothLinks)
+            		);
             	console.log(show);
             }
             $('#wednesSchd').listview('refresh');
@@ -322,7 +395,7 @@ function wednes2() {
 	});
 }
 function thurs1() {
-	$.couch.db('asdfix').openDoc('Thursdays:Schedule1', {
+	$.couch.db('asdfix').openDoc(thurs1Schd._id, {
 		success:function(data) {
 			console.log(data);
 			//$('#viewSchd').empty();
@@ -363,8 +436,15 @@ function thurs1() {
             
             for(var i=0, l= thursAll.length; i<l; i++){
             	var show = thursAll[i];
-            	$('#thursSchd').append(
-            			$('<li>').text(show));
+            	var bothLinks = 
+            		'<div class="schdWindowEdt"> ' +
+            		'<a href="#" class="editLink">Edit</a> ' + 
+            		'<a href="#" class="deleteLink">Delete</a> ' +
+            		'</div>';
+            	
+            		$('#thursSchd').append(
+            			$('<li>').text(show).append(bothLinks)
+            		);
             	console.log(show);
             }
             $('#thursSchd').listview('refresh');
@@ -375,10 +455,10 @@ function thurs1() {
 	});
 }
 function fri1() {
-	$.couch.db('asdfix').openDoc('Fridays:Schedule1', {
+	$.couch.db('asdfix').openDoc(fri1Schd._id, {
 		success:function(data) {
 			console.log(data);
-			//$('#viewSchd').empty();
+			//$('#friCont').empty();
 			var friAll = [];
 			var len = data.length;
 			var major = data.major;
@@ -416,9 +496,18 @@ function fri1() {
             
             for(var i=0, l= friAll.length; i<l; i++){
             	var show = friAll[i];
-            	$('#friSchd').append(
-            			$('<li>').text(show));
+            	
             	console.log(show);
+            	var bothLinks = 
+            		'<div class="schdWindowEdt"> ' +
+            		'<a href="#" class="editLink">Edit</a> ' + 
+            		'<a href="#" class="deleteLink">Delete</a> ' +
+            		'</div>';
+            	
+            		$('#friSchd').append(
+            			$('<li>').text(show).append(bothLinks)
+            		);
+            	
             }
             $('#friSchd').listview('refresh');
 		},
@@ -428,7 +517,7 @@ function fri1() {
 	});
 }
 function satur1() {
-	$.couch.db('asdfix').openDoc('Saturdays:Schedule1', {
+	$.couch.db('asdfix').openDoc(satur1Schd._id, {
 		success:function(data) {
 			console.log(data);
 			//$('#viewSchd').empty();
@@ -469,8 +558,15 @@ function satur1() {
             
             for(var i=0, l= saturAll.length; i<l; i++){
             	var show = saturAll[i];
-            	$('#saturSchd').append(
-            			$('<li>').text(show));
+            	var bothLinks = 
+            		'<div class="schdWindowEdt"> ' +
+            		'<a href="#" class="editLink">Edit</a> ' + 
+            		'<a href="#" class="deleteLink">Delete</a> ' +
+            		'</div>';
+            	
+            		$('#saturSchd').append(
+            			$('<li>').text(show).append(bothLinks)
+            		);
             	console.log(show);
             }
             $('#saturSchd').listview('refresh');
@@ -481,7 +577,7 @@ function satur1() {
 	});
 }
 function sun1() {
-	$.couch.db('asdfix').openDoc('Sundays:Schedule1', {
+	$.couch.db('asdfix').openDoc(sun1Schd._id, {
 		success:function(data) {
 			console.log(data);
 			//$('#viewSchd').empty();
@@ -522,8 +618,16 @@ function sun1() {
             
             for(var i=0, l= sunAll.length; i<l; i++){
             	var show = sunAll[i];
-            	$('#sunSchd').append(
-            			$('<li>').text(show));
+            	var bothLinks = 
+            		'<div class="schdWindowEdt"> ' +
+            		'<a href="#" class="editLink">Edit</a> ' + 
+            		'<a href="#" class="deleteLink">Delete</a> ' +
+            		'</div>';
+            	
+            		$('#sunSchd').append(
+            			$('<li>').text(show).append(bothLinks)
+            		);
+            		
             	console.log(show);
             }
             $('#sunSchd').listview('refresh');
@@ -533,11 +637,36 @@ function sun1() {
 		}
 	});
 }
-
+function visOfElement (v) {
+    switch (v) {
+        case 'on':
+        	$('.editLink').hide();
+            
+            break;
+        case 'off':
+            
+            break;
+        default:
+            return false;
+    }
+}
+function editMon1(evt){
+	console.log("evt");
+	var evtHolder = $(evt.target);
+	if(evtHolder == mon1Schd._id && evtHolder.hasClass("editLink")){
+		editId = evtHolder.attr("id");
+		console.log(editId);
+		
+	}
+}
 $('#mondays').on('pageinit', function() {
+	
 	console.log("mondays pg");
 	mon1();
 	mon2();
+	$('.editLink').on('click', editMon1(evt));
+		
+	
 });
 $('#tuesdays').on('pageinit', function() {
 	console.log("tuesdays pg");
@@ -593,7 +722,16 @@ function clearFormFields() {
 	});
 }
 function removeMon1() {
-	//var 
+	$
+		var doc = mon1Schd;
+		$.couch.db("asdfix").removeDoc(doc, {
+			success:function(data) {
+				console.log(data);
+			},
+			error: function(status) {
+				console.log(status);
+			}
+		});
 }
 
 function addSchd(){
@@ -670,7 +808,7 @@ function addSchd(){
 			});
 		}
 }
-//Each page when selected to add takes them straight to the form:
+//Each page when selected to ADD a schedule takes them straight to the form:
 $('#addNavHomeId').on('click', addSchd);
 $('#addMonSchdId').on('click', addSchd);
 $('#addTuesSchdId').on('click', addSchd);
@@ -680,6 +818,7 @@ $('#addFridId').on('click', addSchd);
 $('#addSaturSchdId').on('click', addSchd);
 $('#addSunSchdId').on('click', addSchd);
 
+//Each page when selected to Delete a schedule takes them straight to the form:
 
-
+$('#editDeleteMonSchdId').on('click', addSchd);
 
