@@ -570,25 +570,35 @@ $('#viewOpt').on('pageinit', function() {
 	mon1();
 	
 	console.log("viewOpt pg");
-	
-	
 });
-
-$('#addSchd').on('pageinit', function() {
-	//$('#collegeForm').empty();
-	$('#collegeForm').each(function(){
-		  this.reset();
+function clearFormFields() {
+	$('#collegeForm').find(':input').each(function(){
+		switch(this.type){
+			case 'text':
+				$(this).val('');
+				break;
+			case 'date':
+				$(this).val('');
+				break;
+			case 'range':
+				$(this).val('');
+				break;
+			case 'radio':
+				$(this).val('');
+				break;
+			case 'checkbox':
+				$(this).val('');
+				break;
+		}
 	});
-
-	console.log("addColl pg");
-	
-	
-});	
+}
+function removeMon1() {
+	//var 
+}
 
 function addSchd(){
-	$('#collegeForm').each (function(){
-		  this.reset();
-		});
+	//$('#collegeForm').remove();
+	clearFormFields();
 	//clearForm();
 	//window.location = $("#addSchd");
 	//window.location.reload();
@@ -660,7 +670,7 @@ function addSchd(){
 			});
 		}
 }
-
+//Each page when selected to add takes them straight to the form:
 $('#addNavHomeId').on('click', addSchd);
 $('#addMonSchdId').on('click', addSchd);
 $('#addTuesSchdId').on('click', addSchd);
