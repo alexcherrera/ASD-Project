@@ -274,6 +274,28 @@
 			</div>
 		</footer>
 	</section>
+	<!--Delete Schedule-->
+	<section data-role="page" id="schdDelete" data-add-back-btn="true">
+		<header data-role="header" data-position="inline" data-fullscreen="true">
+			<!--Main header--> 
+			<h1>Delete Schedules</h1>
+		</header>
+		<!--Content Section--> 
+		<div data-role="content" class="content">
+			
+			
+		</div>
+		<footer data-role="footer">
+			<!--Navigation Bar--> 
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#home" class="navhome">Home</a></li>
+					<li><a href="#addViewSchd" id="addSchdLinkId">Add New</a></li>
+					<li><a href="#editSchd" id="editDeleteSchdLinkId">Edit</a></li>
+				</ul>
+			</div>
+		</footer>
+	</section>
 	<!--Edit Schedule-->
 	<section data-role="page" id="schdedit" data-nobackbtn="true">
 		<header data-role="header" data-position="inline" data-fullscreen="true">
@@ -286,126 +308,7 @@
 			<ul id="editCont" data-role="listview">
 				
 			</ul>
-			<form action="#" id="collegeForm">	
-					<!--Legend Title Text-->
-					<h2>Add New Course:</h2>
-					<div data-role="fieldcontain">
-						<ul id="errorMessages"></ul>
-					</div>	
-					<div data-role="fieldcontain">
-					<label for="departments">Departments:</label>
-					<select name="departments" id="departments" value="departments" data-native-menu="false" class="required">
-						<option label="--Choose a Major--" value="--Choose a Major--">--Choose a Majar--</option>
-						<optgroup label="College Of Architecture">
-							<option value="Architecture">Architecture</option>
-						</optgroup>
-						<optgroup label="Institute Of Arts And Sciences">
-							<option value="Biology">Biology</option>
-							<option value="Mathematics">Mathematics</option>
-						</optgroup>
-						<optgroup label="Academy Of Business">
-							<option value="Accounting">Accounting</option>	
-							<option value="Economics">Economics</option>	
-						</optgroup>
-						<optgroup label="Sciences of Engineering Institute">
-							<option value="Computer Engineering">Computer Engineering</option>	
-							<option value="Electrical Engineering">Electrical Engineering</option>
-						</optgroup>
-					</select>	
-					</div>
-					<div data-role="fieldcontain">
-						<!--Course Name Input Field-->
-						<label for="courseName">Course Name:</label>
-						<input type="text" name="courseName" id="courseName" placeholder="Introduction to Biology" class="required"/>
-						<!--Course Section Input Field-->
-						<label for="courseSection">Course Section: </label>
-						<input type="text" name="courseSection" id="courseSection" class="required"/><p id="cstext">Example: BIO101</p>
-					</div>
-					<div data-role="fieldcontain">
-						<label for="topicAndSection">Topic and Section: </label>
-						<input type="text" name="topicAndSection" id="topicAndSection" class="required"/><p id="tastext">Example: Organic Compounds, Section 2.3</p>
-					</div>
-					<!--Date Information-->
-					<div data-role="fieldcontain">
-						<!--Today's Date Input Field-->
-						<label for="todaysDate">Today's Date: </label>
-						<input type="date" name="todaysDate" id="todaysDate" data-role="datebox" data-options='{"mode": "calbox"}' class="required"/>
-						<!--Due Date Input Field-->
-						<label for="dueDate">Due Date: </label>
-						<input type="date" name="dueDate" id="dueDate" data-role="datebox" data-options='{"mode": "calbox"}' class="required"/>
-					</div>
-					<!--Number of Weeks in the Class Range-->
-					<div data-role="fieldcontain">
-						<label for="weeksOfClass">The Number of Weeks for This Class:</label>
-						<input type="range" name="weeksOfClass" id="weeksOfClass" value="0" min="0" max="50"/>
-					</div>
-					<!--Is the Class on Campus or Online Slider-->
-					<div data-role="fieldcontain">
-						<label for="slideValue">Is the Class on Campus or Online:</label>
-						<select data-role="slider" id="slideValue">
-							<option value="off">Campus</option>
-							<option value="on">Online</option>
-						</select>
-					</div>
-					<!--Course Number of Credits Radio Selection-->
-					<div data-role="fieldcontain">
-						<fieldset data-role="controlgroup" class="radioNum">
-							<legend>Number of Credits:</legend>
-							<!--1 Credit-->
-							<input type="radio" name="courseNumCredits" id="courseNumCredits1" value="courseNumCredits1" class="required"/>
-							<label for="courseNumCredits1">1 Credit</label>
-							<!--2 Credit-->
-							<input type="radio" name="courseNumCredits" id="courseNumCredits2" value="courseNumCredits2"/>
-							<label for="courseNumCredits2">2 Credit</label>
-							<!--3 Credit-->
-							<input type="radio" name="courseNumCredits" id="courseNumCredits3" value="courseNumCredits3"/>
-							<label for="courseNumCredits3">3 Credit</label>
-							<!--4 Credit-->
-							<input type="radio" name="courseNumCredits" id="courseNumCredits4" value="courseNumCredits4"/>
-							<label for="courseNumCredits4">4 Credit</label>
-						</fieldset>
-					</div>
-					<!--Teacher Contact Information-->
-					<div data-role="fieldcontain">
-						<!--Teacher Name Input Field-->
-						<label for="teacherName">Teacher Name:</label>
-						<input type="text" name="teacherName" id="teacherName" class="required" placeholder="Mr.Roberts"/>
-						<!--Teacher Email Address Input Field-->
-						<label for="teacherEmail">Teacher Email Address:</label>
-						<input type="text" name="teacherEmail" id="teacherEmail" class="required" placeholder="aRoberts@fullsail.edu"/>
-						<!--Teacher Phone Number Input Field-->
-						<label for="teacherPhone">Teacher Phone Number:</label>
-						<input type="text" name="teacherPhone" id="teacherPhone" class="required" placeholder="111-222-3333"/>
-						<!--Best Method to Contact Teacher Checkboxes-->
-					</div>
-					<div data-role="fieldcontain">
-						<fieldset data-role="controlgroup">
-							<legend>Best Method To Get In Contact:</legend>
-							<!--Email Option-->
-							<label for="sendEmail"><input type="checkbox" value="sendEmail" name="bestMethodContact" id="sendEmail" class="required"/>Email</label>
-							<!--Phone Number Option-->
-							<label for="phone"><input type="checkbox" value="phone" name="bestMethodContact" id="phone"/>Phone</label>
-							<!--Office Hours Option-->
-							<label for="office-Hours"><input type="checkbox" value="office-Hours" name="bestMethodContact" id="office-Hours"/>Office Hours</label>
-						</fieldset>
-					</div>
-					<!--Note Section-->
-					<div>
-						<label for="noteSection">Assignment Notes:</label><textarea id="noteSection" placeholder="Class starts"></textarea>
-					</div>
-					<!--Submit and Reset Field-->
-					<div class="ui-body ui-body-b">
-						<fieldset class="ui-grid-a">
-							<div class="ui-grid-a">
-								<p id="submit" data-role="button" data-theme="b">Submit</p>
-							</div>
-							<div class="ui-grid-b">
-								<p id="cancel" data-role="button" data-theme="a">Cancel</p>
-							</div>
-						</fieldset>
-					</div>
-					<a href="#scheduleErrors" id="schedErrorsLink" data-rel="dialog" data-transition="pop">Open Errors</a>
-				</form>
+		
 		</div>
 		<footer data-role="footer">
 			<!--Navigation Bar--> 
@@ -537,7 +440,7 @@
 						<input type="submit" value="submit" id="submit" data-theme="b"/>
 						<input type="reset" value="reset" id="reset" onclick="return false" data-theme="a"/>
 					</div>
-					<a href="#scheduleErrors" id="schedErrorsLink" data-rel="dialog" data-transition="pop">Open Errors</a>
+					
 				</form>	
 			</div>
 			<footer data-role="footer">

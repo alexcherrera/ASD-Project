@@ -78,16 +78,26 @@ function mon1() {
             	var show = monAll[i];
             	var bothLinks = 
             		'<div class="schdWindowEdt"> ' +
-            		'<a href="#schdedit" class="editLink">Edit</a> ' + 
+            		'<a href="#" class="editLink">Edit</a> ' + 
             		'<a href="#" class="deleteLink">Delete</a> ' +
             		'</div>';
             	
             		$('#monSchd').append(
             			$('<li>').text(show).append(bothLinks)
             		);
+            		$('#monSchd').append(
+                			$('<li>').text(show)
+                	);
             	console.log(show);
             }
-            $('#monSchd').listview('refresh');
+           // $('#monSchd').listview('refresh');
+            /*var bothLinksCont = 
+        		'<div class="schdWindowEdt"> ' +
+        		'<a href="#" data-role="button" class="editLink">Edit</a> ' + 
+        		'<a href="#" data-role="button" class="deleteLink">Delete</a> ' +
+        		'</div>';
+        	
+        		$('#monCont').append(bothLinksCont);*/
 		},
 		error:function(status) {
 			console.log(status);
@@ -656,16 +666,67 @@ function editMon1(evt){
 	if(evtHolder == mon1Schd._id && evtHolder.hasClass("editLink")){
 		editId = evtHolder.attr("id");
 		console.log(editId);
+		$.couch.db('asdfix').openDoc(editId, {
+			success: function(doc) {
+				$('#departments').val() = doc.major[1];
+		        $('#courseName').val() = doc.cName[1];
+		        $('#courseSection').val() = doc.cSection[1];
+		        $('#topicAndSection').val() = doc.topicAndSec[1];
+		        $('#todaysDate').val() = doc.todaysDate[1];
+		        $('#dueDate').val() = doc.dueDate[1];
+		        $('#weeksOfClass').val() = doc.numOfWeeks[1];
+		        $('#slideValue').val() = doc.classOptView[1];
+		        var numOfCreditsVal = $("input[name=courseNumCredits]");
+		        for (var i = 0; i < numOfCreditsVal.length; i++) {
+		            if (numOfCreditsVal[i].val() == "courseNumCredits1" && doc.numOfCredits[1] == "courseNumCredits1") {
+		            	numOfCreditsVal[i].attr("checked", "checked");
+		            } else if (numOfCreditsVal[i].val() == "courseNumCredits2" && doc.numOfCredits[1] == "courseNumCredits2"){
+		            	numOfCreditsVal[i].attr("checked", "checked");
+		            } else if (numOfCreditsVal[i].val() == "courseNumCredits3" && doc.numOfCredits[1] == "courseNumCredits3"){
+		            	numOfCreditsVal[i].attr("checked", "checked");
+		            } else if (numOfCreditsVal[i].val() == "courseNumCredits4" && doc.numOfCredits[1] == "courseNumCredits4"){
+		            	numOfCreditsVal[i].attr("checked", "checked");
+		            }
+		        }
+		        $('#teacherName').val() = doc.teachName[1];
+		        $('#teacherEmail').val() = doc.teachEamil[1];
+		        $('#teachPhone').val() = doc.teacherPhone[1];
+		        var bestMthContValue = $("input[name=bestMethodContact]");
+		        for (var i = 0; i < bestMthContValue.length; i++) {
+		            if (bestMthContValue[i].val() == "sendEmail" && doc.bestMthCont[1] == "sendEmail") {
+		            	bestMthContValue[i].attr("checked", "checked");
+		            } else if (bestMthContValue[i].val() == "phone" && doc.bestMthCont[1] == "phone"){
+		            	bestMthContValue[i].attr("checked", "checked");
+		            } else if (bestMthContValue[i].val() == "office-Hours" && doc.bestMthCont[1] == "office-Hours"){
+		            	bestMthContValue[i].attr("checked", "checked");
+		            }
+		        }
+		        $('#noteSection').val() = doc.note[1];
+			}
+		});
 		
 	}
 }
+function removeMon1() {
+	console.log("removeMon1");
+		var doc = mon1Schd;
+		$.couch.db("asdfix").removeDoc(doc, {
+			success:function(data) {
+				console.log(data);
+			},
+			error: function(status) {
+				console.log(status);
+			}
+		});
+}
+
 $('#mondays').on('pageinit', function() {
 	
 	console.log("mondays pg");
 	mon1();
 	mon2();
-	$('.editLink').on('click', editMon1(evt));
-		
+	$('.editLink').on('click', editMon1);
+	$('.deleteLink').on('click', removeMon1);
 	
 });
 $('#tuesdays').on('pageinit', function() {
@@ -721,22 +782,11 @@ function clearFormFields() {
 		}
 	});
 }
-function removeMon1() {
-	$
-		var doc = mon1Schd;
-		$.couch.db("asdfix").removeDoc(doc, {
-			success:function(data) {
-				console.log(data);
-			},
-			error: function(status) {
-				console.log(status);
-			}
-		});
-}
+
 
 function addSchd(){
 	//$('#collegeForm').remove();
-	clearFormFields();
+	//clearFormFields();
 	//clearForm();
 	//window.location = $("#addSchd");
 	//window.location.reload();
